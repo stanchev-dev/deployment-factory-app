@@ -1,0 +1,182 @@
+body {
+  background-color: #eef3f9;
+  font-family: 'Inter', sans-serif;
+}
+
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  padding: 0 1rem;
+}
+
+.navbar .container-fluid {
+  height: 100%;
+}
+
+
+.navbar .btn {
+  display: flex;
+  align-items: center;
+}
+
+
+.navbar-brand {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  color: #0d6efd;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+  color: #0b5ed7;
+}
+
+.navbar-brand img {
+  width: 32px;
+  height: 32px;
+}
+
+.brand-icon {
+  font-size: 32px;
+  line-height: 1;
+  vertical-align: middle;
+  color: inherit;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  font-size: 24px;
+  color: #0d6efd;
+}
+
+.profile-pic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+}
+
+.profile-pic-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-link {
+  text-decoration: none;
+  color: #333333;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.profile-link:hover {
+  color: #333333;
+  text-decoration: none;
+  transform: scale(1.05);
+}
+
+.profile-menu:hover .dropdown-menu {
+  display: block;
+}
+
+.profile-menu {
+  position: relative;
+}
+
+.profile-menu .dropdown-menu {
+  top: 100%;
+  left: auto;
+  right: 0;
+}
+
+.navbar .nav-link {
+  color: #000000;
+  padding: 10px 16px;
+  transition: transform 0.2s ease;
+}
+
+.navbar .nav-link .icon {
+  color: #0d6efd;
+}
+
+.navbar .nav-link:hover {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  transform: scale(1.05);
+}
+
+.profile-dropdown {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-dropdown .dropdown-item {
+  padding: 10px 20px;
+  transition: transform 0.2s ease;
+}
+
+.profile-dropdown .dropdown-item:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.02);
+}
+
+.card-style {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.btn {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  cursor: pointer;
+  filter: brightness(0.95);
+  transform: scale(1.1);
+}
+
+.suggestion-send-btn:hover {
+  transform: scale(1.03);
+}
+
+
+.history-item {
+  transition: transform 0.2s ease;
+}
+
+.history-item:hover {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  transform: scale(1.02);
+}
+
+
+.profile-section {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
+
+.profile-username {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+
+

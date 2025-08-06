@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tz %}
+
+{% block title %}Suggestions - FactoryApp{% endblock %}
+
+{% block content %}
+<h2>Suggestions</h2>
+<div class="mb-3">
+  <form method="post" class="card-style">
+    {% csrf_token %}
+    <div class="input-group">
+      <textarea name="text" class="form-control" placeholder="Enter suggestion..."></textarea>
+      <button class="btn btn-primary suggestion-send-btn" type="submit"><img src="{% static 'icons/add.svg' %}" class="icon me-1" alt="Add">Send</button>
+    </div>
+  </form>
+</div>
+
+<div class="list-group">
+  {% for s in suggestions %}
+  <div class="card-style mb-3">
+    <p class="mb-1">{{ s.text }}</p>
+    <small class="text-muted">by {{ s.created_by.username }} - {{ s.created_at|localtime|date:'d.m.Y H:i' }}</small>
+    <div class="mt-2">
+      <a class="btn btn-sm btn-outline-success" href="{% url 'vote_suggestion' s.id 'yes' %}">👍 {{ s.yes_votes }}</a>
+      <a class="btn btn-sm btn-outline-danger" href="{% url 'vote_suggestion' s.id 'no' %}">👎 {{ s.no_votes }}</a>
+      {% if user.role == 'manager' %}
+      <div class="dropdown d-inline ms-3">
+        <a class="badge dropdown-toggle text-decoration-none {% if s.status == 'approved' %}bg-success{% elif s.status == 'rejected' %}bg-danger{% else %}bg-warning text-dark{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
+          {{ s.get_status_display }}
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{% url 'change_suggestion_status' s.id 'approved' %}">Approved</a></li>
+          <li><a class="dropdown-item" href="{% url 'change_suggestion_status' s.id 'rejected' %}">Rejected</a></li>
+          <li><a class="dropdown-item" href="{% url 'change_suggestion_status' s.id 'in_process' %}">In Process</a></li>
+        </ul>
+      </div>
+      <form method="post" action="{% url 'delete_suggestion' s.id %}" class="d-inline">
+        {% csrf_token %}
+        <button class="btn btn-sm btn-outline-danger ms-2" type="submit"><i class="fa-solid fa-trash"></i></button>
+      </form>
+      {% else %}
+      <span class="badge ms-3 {% if s.status == 'approved' %}bg-success{% elif s.status == 'rejected' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
+        {{ s.get_status_display }}
+      </span>
+      {% endif %}
+    </div>
+  </div>
+  {% empty %}
+  <p>No suggestions.</p>
+  {% endfor %}
+</div>
+{% endblock %}
