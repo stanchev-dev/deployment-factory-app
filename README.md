@@ -71,3 +71,25 @@ config/        – Django project configuration
 
 ## License
 This repository is provided for educational purposes and is not intended for production use.
+
+## Deploying on Railway
+1. Install the [Railway CLI](https://docs.railway.app/develop/cli).
+2. Create a new Railway project and link it to this repository:
+   ```bash
+   railway init
+   railway link
+   ```
+3. Set required environment variables in Railway:
+   - `SECRET_KEY`
+   - `DEBUG` (set to `False` in production)
+   - `MANAGER_SECRET_KEY`
+   - `ALLOWED_HOSTS` (comma-separated hostnames, e.g. `example.com`)
+4. Provision a PostgreSQL database in Railway and the `DATABASE_URL` variable will be added automatically.
+5. Deploy the application:
+   ```bash
+   railway up
+   ```
+6. Apply database migrations:
+   ```bash
+   railway run python manage.py migrate
+   ```
