@@ -17,6 +17,22 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+import django
+django.setup()
+
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
+username = 'admin'
+password = 'Test1234!'
+email = 'admin@example.com'
+
+if not User.objects.filter(username=username).exists():
+    User.objects.create_superuser(username=username, password=password, email=email)
+    print('Суперюзърът е създаден.')
+else:
+    print('Суперюзърът вече съществува.')
+
 
 if __name__ == '__main__':
     main()
